@@ -1,22 +1,70 @@
-# Mô tả tóm tắt đồ án và công ghệ sử dụng
+# Getting Started with Create React App
 
-## Mô tả chi tiết
-### 1. Tên đồ án: Website đặt lịch khám nha sĩ
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### 2. Mô tả tóm tắt đồ án:
-  Dự án này nhằm mục đích xây dựng một trang web đặt lịch khám nha sĩ để giúp người dùng dễ dàng đặt lịch hẹn với các nha sĩ một cách thuận tiện và linh hoạt. Dưới đây là một tóm tắt về các tính năng và chức năng chính của dự án:
-- Đăng nhập và đăng ký: Người dùng có thể đăng nhập vào hệ thống bằng tài khoản đã đăng ký hoặc có thể đăng ký tài khoản mới.
-- Tìm kiếm và chọn nha sĩ: Người dùng có thể tìm kiếm nha sĩ dựa trên địa điểm, chuyên môn, hoặc tên nha sĩ. Họ cũng có thể xem thông tin chi tiết về từng nha sĩ bao gồm thông tin liên hệ, giờ làm việc và đánh giá từ các bệnh nhân trước.
-- Đặt lịch hẹn: Sau khi chọn được nha sĩ, người dùng có thể chọn thời gian và ngày hẹn phù hợp từ lịch trống của nha sĩ. Họ cũng có thể ghi chú các vấn đề sức khỏe cụ thể hoặc yêu cầu riêng của mình.
-- Thanh toán: người dùng có thể chọn thanh toán trực tiếp hoặc trực tuyến để nhận ưu đãi
-- Quản lý lịch hẹn: Người dùng có thể xem và quản lý các lịch hẹn đã đặt, bao gồm cập nhật, hủy bỏ hoặc đổi lịch hẹn (nếu được phép).
-- Thông báo và nhắc nhở: Hệ thống có thể gửi thông báo và nhắc nhở đến người dùng qua email hoặc tin nhắn để thông báo về các lịch hẹn sắp tới hoặc các cập nhật về tình trạng của lịch hẹn.
-- Đánh giá và phản hồi: Sau khi hoàn thành lịch hẹn, người dùng có thể đánh giá và viết phản hồi về trải nghiệm của họ với nha sĩ, giúp cải thiện chất lượng dịch vụ.
-- Quản trị hệ thống: Hệ thống có giao diện quản trị cho quản trị viên có thể quản lý thông tin nha sĩ, quản lý lịch hẹn, xem đánh giá và phản hồi từ người dùng.
+## Available Scripts
 
-### 3. Fullstack các công nghệ sẽ sử dụng
-MERN stack
-- Mongo DB
-- Express.js
-- React.js
-- Node.js
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+## Learn More
+
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+
+To learn React, check out the [React documentation](https://reactjs.org/).
+
+### Code Splitting
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Analyzing the Bundle Size
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

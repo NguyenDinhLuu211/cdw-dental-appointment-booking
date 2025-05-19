@@ -1,4 +1,4 @@
-# Mô tả tóm tắt đồ án và công ghệ sử dụng
+# Mô tả tóm tắt đồ án và công nghệ sử dụng
 
 ## Mô tả chi tiết
 ### 1. Tên đồ án: Website đặt lịch khám nha sĩ

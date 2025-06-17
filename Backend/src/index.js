@@ -2,37 +2,53 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose  = require("mongoose");
 const routes = require("./routes");
-const cors = require('cors')
-const bodyParser = require("body-parser");
-const cookieParser = require('cookie-parser')
-dotenv.config()
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
-const app = express()
-// 3001 cho khong trung voi ben front end
-const port = process.env.PORT || 3001
+dotenv.config();
 
-// Chính sách bảo mật của trình duyệt web
-app.use(cors())
-app.use(express.json({limit: '50mb'}));
-app.use(express.urlencoded({limit: '50mb'}));
-// Nhận chuỗi json từ dưới user gửi lên
-app.use(bodyParser.json())
-app.use(cookieParser())
+const app = express();
+const port = process.env.PORT || 3001;
+
+// ✅ Kích hoạt CORS nếu frontend gọi từ domain khác
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://cdw-frontend.vercel.app' // cập nhật domain frontend thực tế của bạn
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    // Cho phép gọi từ Postman hoặc không có origin
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
+
+
+// ✅ Middleware xử lý JSON và form
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
+
+// ✅ Cookie parser
+app.use(cookieParser());
+
+// ✅ Khai báo các routes
 routes(app);
 
-
-
-// connect db, file cấu hình được khai báo bên .env
-mongoose.connect(`${process.env.MONGO_DB}`)
+// ✅ Kết nối MongoDB
+mongoose.connect(process.env.MONGO_DB)
 .then(() => {
-    console.log('Connect db success')
+    console.log('✅ Connect db success');
 })
 .catch((err)=> {
-    console.log(err)
-})
+    console.error('❌ Connect db failed:', err);
+});
 
-
-
+// ✅ Khởi động server
 app.listen(port, () => {
-    console.log('Server is running in port:',+port)
-})
+    console.log(`🚀 Server is running on http://localhost:${port}`);
+});

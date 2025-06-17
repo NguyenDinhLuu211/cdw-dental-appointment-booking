@@ -296,10 +296,13 @@ const AdminSchedule = () =>{
         //   text
         // ),
     });
-    const getDayOfWeekName = (dayOfWeek) => {
-      const days = [ 'Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy','Chủ nhật'];
-      return days[dayOfWeek];
-    };
+  const getDayOfWeekName = (dayNumber) => {
+  const days = ['Thứ hai', 'Thứ ba', 'Thứ tư', 'Thứ năm', 'Thứ sáu', 'Thứ bảy', 'Chủ nhật'];
+  // dayNumber = 1 → Thứ hai, dayNumber = 2 → Thứ ba, ..., dayNumber = 7 → Chủ nhật
+  return days[(dayNumber - 1)] || 'Không xác định';
+};
+
+
     
     const columns = [
       // {
@@ -353,7 +356,8 @@ const AdminSchedule = () =>{
         key: `${user._id}-${index}`,
         // Thêm trường mới cho cột Giờ
         timeSlot: `${hour.startTime} - ${hour.endTime}`, // Chuỗi startTime - endTime
-        doctorName: hour.doctor.name ,
+       doctorName: hour?.doctor?.name || 'Chưa có',
+ 
         dayOfWeekName: getDayOfWeekName(user.dayOfWeek) // Chuyển đổi số ngày thành tên ngày
       })) || []
     );

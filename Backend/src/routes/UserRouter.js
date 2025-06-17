@@ -16,5 +16,6 @@ router.get('/get-details/:id', userController.getDetailsUser )
 
 router.post('/refresh-token', userController.refreshToken )
 router.post('/delete-many',authMiddleware, userController.deleteMany )
+router.get('/get-all-doctors', userController.getAllDoctors)
 
 module.exports = router

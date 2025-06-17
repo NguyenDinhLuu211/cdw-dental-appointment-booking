@@ -228,6 +228,22 @@ const getDetailsUser = (id) =>{
     })
 }
 
+const getAllDoctors = () => {
+    return new Promise(async (resolve, reject) => {
+        try {
+            const doctorList = await User.find({ isDoctor: true });
+            resolve({
+                status: 'OK',
+                message: 'SUCCESS',
+                data: doctorList
+            });
+        } catch (e) {
+            reject(e);
+        }
+    });
+};
+
+
 
 module.exports = {
     createUser,
@@ -236,6 +252,6 @@ module.exports = {
     deleteUser,
     getAllUser,
     getDetailsUser,
-    deleteManyUser
-  
+    deleteManyUser,
+  getAllDoctors
 }

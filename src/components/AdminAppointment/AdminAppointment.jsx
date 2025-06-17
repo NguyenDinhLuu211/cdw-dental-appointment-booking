@@ -367,7 +367,8 @@ const AdminAppointment = () =>{
         render: renderAction,
       },
     ];
-    const filteredData = appointments?.data.filter(item => item?.appointment?.status === 'Confirmed');
+    const filteredData = appointments?.data?.filter(item => item?.appointment?.status === 'Confirmed') || [];
+
     const dataTable = filteredData?.reverse().map((item, index) => ({
       key: index,
       id: item?.appointment?._id,

@@ -89,11 +89,11 @@ const items = [
     //     },
     //   ],
     },
-    // {
-    //   key: 'order',
-    //   label: 'Quản lý đơn hàng',
-    //   icon: <ShoppingCartOutlined />,
-    // },
+    {
+      key: 'order',
+      label: 'Quản lý đơn hàng',
+      icon: <ShoppingCartOutlined />,
+    },
     {
       key: 'appointment',
       label: 'Lịch hẹn sắp đến',

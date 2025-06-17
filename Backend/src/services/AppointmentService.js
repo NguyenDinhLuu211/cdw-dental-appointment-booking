@@ -1,48 +1,55 @@
-const Appointment = require("../models/AppointmentModel")
-const Schedule = require("../models/ScheduleModel")
-const createAppointment = (newSchedule) =>{
-    return new Promise(async(resolve, reject) =>{
-        const { customer, service, workingHour} = newSchedule;
-        try{
-            // console.log('new',newSchedule)
-               // Kiểm tra sự tồn tại của workingHourId
-        const schedule = await Schedule.findOne({ 'workingHours._id': workingHour });
-        if (!schedule) {
-            return res.status(404).json({
-                status: 'ERR',
-                message: 'WorkingHour not found in any Schedule'
-            });
-        }else{
-         
+const mongoose = require('mongoose');
+const Appointment = require("../models/AppointmentModel");
+const Schedule = require("../models/ScheduleModel");
 
-        // Tạo cuộc hẹn mới
-        const createdAppointment = await Appointment.create({
-            customer,
-            service,
-            workingHour
+const createAppointment = (newSchedule) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      let { customer, service, workingHour } = newSchedule;
+
+      // Ép kiểu ObjectId
+      customer = mongoose.Types.ObjectId(customer);
+      service = mongoose.Types.ObjectId(service);
+      const workingHourObjectId = mongoose.Types.ObjectId(workingHour);
+
+      const schedule = await Schedule.findOne({ 'workingHours._id': workingHourObjectId });
+      console.log("Schedule found:", schedule);
+      if (!schedule) {
+        return resolve({
+          status: 'ERR',
+          message: 'WorkingHour not found in any Schedule'
         });
+      }
 
-        if (createdAppointment) {
-              // Cập nhật isAvailable của workingHour thành false
-              const workingHourToUpdate = schedule.workingHours.id(workingHour);
-              workingHourToUpdate.isAvailable = false;
-              await schedule.save();
-            resolve({
-                status: 'OK',
-                message: 'Appointment created successfully',
-                data: createdAppointment
-            })
-            }
+      const createdAppointment = await Appointment.create({
+        customer,
+        service,
+        workingHour: workingHourObjectId
+      });
+
+      if (createdAppointment) {
+        const workingHourToUpdate = schedule.workingHours.id(workingHourObjectId);
+        workingHourToUpdate.isAvailable = false;
+        await schedule.save();
+
+        return resolve({
+          status: 'OK',
+          message: 'Appointment created successfully',
+          data: createdAppointment
+        });
+      } else {
+        return resolve({
+          status: 'ERR',
+          message: 'Failed to create appointment'
+        });
+      }
+
+    } catch (e) {
+      reject(e);
     }
-    
-       
-        
-            resolve({})
-        }catch(e){
-            reject(e)
-        }
-    })
-}
+  });
+};
+
 
 const getDetailsAppointment = (appointmentId) => {
     return new Promise(async (resolve, reject) => {
